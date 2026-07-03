@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أكاديمية منار لتحفيظ القرآن الكريم أونلاين</title>
+<meta name="description" content="أكاديمية منار لتحفيظ القرآن الكريم أونلاين — تعلّم القرآن الكريم والتجويد والتفسير مع نخبة من المحفظين والمحفظات عبر جلسات مباشرة فردية، لجميع الأعمار من كل أنحاء العالم.">
+<meta property="og:title" content="أكاديمية منار لتحفيظ القرآن الكريم أونلاين">
+<meta property="og:description" content="ابدأ رحلتك مع القرآن الكريم من أي مكان في العالم">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800;900&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    darkMode: 'class',
+    theme: {
+      extend: {
+        colors: {
+          primary: { DEFAULT:'#0B6B50', dark:'#084D3A', light:'#0E8A67', 50:'#EAF4F0' },
+          gold: { DEFAULT:'#C9A227', dark:'#A9861C', light:'#E4C455' },
+          beige: { DEFAULT:'#FAF6EC', dark:'#F1E9D6' },
+          ink: '#122922'
+        },
+        fontFamily: {
+          display: ['Cairo','sans-serif'],
+          body: ['Tajawal','sans-serif'],
+        },
+        boxShadow: {
+          soft: '0 10px 30px -10px rgba(11,107,80,0.18)',
+          gold: '0 10px 30px -12px rgba(201,162,39,0.35)',
+        },
+        borderRadius: { '2xl':'1.25rem','3xl':'1.75rem' }
+      }
+    }
+  }
+</script>
+<style>
+  :root{ scroll-behavior:smooth; }
+  body{ font-family:'Tajawal',sans-serif; }
+  h1,h2,h3,h4,h5,.font-display{ font-family:'Cairo',sans-serif; }
+
+  /* Islamic geometric pattern - subtle repeating motif */
+  .pattern-bg{
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(11,107,80,0.10) 1.4px, transparent 0);
+    background-size: 26px 26px;
+  }
+  .dark .pattern-bg{
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(201,162,39,0.14) 1.4px, transparent 0);
+  }
+  .star-pattern{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%230B6B50' stroke-opacity='0.10' stroke-width='1.2'%3E%3Cpath d='M42 4 L58 22 L80 22 L64 38 L70 60 L42 46 L14 60 L20 38 L4 22 L26 22 Z'/%3E%3C/g%3E%3C/svg%3E");
+    background-repeat:repeat;
+  }
+  .dark .star-pattern{
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='84' height='84' viewBox='0 0 84 84'%3E%3Cg fill='none' stroke='%23C9A227' stroke-opacity='0.14' stroke-width='1.2'%3E%3Cpath d='M42 4 L58 22 L80 22 L64 38 L70 60 L42 46 L14 60 L20 38 L4 22 L26 22 Z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  .arch-divider{ position:relative; height:56px; overflow:hidden; }
+  .arch-divider svg{ position:absolute; inset:0; width:100%; height:100%; }
+
+  .reveal{ opacity:0; transform:translateY(24px); transition:opacity .7s ease, transform .7s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+  .reveal-scale{ opacity:0; transform:scale(.94); transition:opacity .6s ease, transform .6s ease; }
+  .reveal-scale.in{ opacity:1; transform:scale(1); }
+
+  ::-webkit-scrollbar{ width:10px; }
+  ::-webkit-scrollbar-track{ background:transparent; }
+  ::-webkit-scrollbar-thumb{ background:#0B6B50; border-radius:10px; }
+
+  .hero-glow{
+    background: radial-gradient(60% 60% at 70% 30%, rgba(201,162,39,0.20), transparent 60%),
+                radial-gradient(70% 70% at 20% 80%, rgba(11,107,80,0.25), transparent 60%);
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .reveal,.reveal-scale{ transition:none; opacity:1; transform:none; }
+  }
+
+  .pill-active{ background:#0B6B50; color:#fff; }
+
+  .card-hover{ transition: transform .35s ease, box-shadow .35s ease; }
+  .card-hover:hover{ transform:translateY(-6px); }
+
+  .whatsapp-pulse{ box-shadow:0 0 0 0 rgba(37,211,102,.55); animation:pulseWa 2.4s infinite; }
+  @keyframes pulseWa{
+    0%{ box-shadow:0 0 0 0 rgba(37,211,102,.55); }
+    70%{ box-shadow:0 0 0 16px rgba(37,211,102,0); }
+    100%{ box-shadow:0 0 0 0 rgba(37,211,102,0); }
+  }
+
+  .badge-ribbon{
+    position:absolute; top:-14px; left:50%; transform:translateX(-50%);
+  }
+
+  input:focus,textarea:focus,button:focus-visible,a:focus-visible{
+    outline:3px solid #C9A227; outline-offset:2px;
+  }
+</style>
+</head>
+<body class="bg-white text-ink dark:bg-[#0A1F19] dark:text-beige transition-colors duration-300">
+
+<!-- ============ NAVIGATION ============ -->
+<header id="nav" class="fixed top-0 inset-x-0 z-50 transition-all duration-300">
+  <div id="navInner" class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between bg-white/90 dark:bg-[#0A1F19]/90 backdrop-blur-md border-b border-black/5 dark:border-white/10">
+    <a href="#home" class="flex items-center gap-3 group">
+      <!-- Logo mark -->
+
+      <img width="46" height="46" viewBox="0 0 64 64" class="drop-shadow-sm"
+      src="hero.png"
+      alt="طالب يقرأ القرآن"
+      class="w-full h-full object-cover">
+
+        <!--
+       <svg width="46" height="46" viewBox="0 0 64 64" class="drop-shadow-sm">
+        <circle cx="32" cy="32" r="31" fill="#0B6B50"/>
+        <path d="M32 6 L38 22 L55 22 L41 32 L46 49 L32 39 L18 49 L23 32 L9 22 L26 22 Z" fill="none" stroke="#C9A227" stroke-width="1.6" opacity="0.9"/>
+        <path d="M32 16c-9 0-16 7-16 16s7 16 16 16c5 0 9.5-2.3 12.4-6-3 2-6.6 3-10.4 3-9 0-14-7-14-13s5-13 14-13c3.8 0 7.4 1 10.4 3-2.9-3.7-7.4-6-12.4-6z" fill="#FAF6EC"/>
+        <circle cx="46" cy="17" r="2.4" fill="#C9A227"/>
+      </svg>-->
+
+      
+      <div class="leading-tight">
+        <p class="font-display font-extrabold text-primary dark:text-gold text-lg">أكاديمية منار</p>
+        <p class="text-[11px] text-primary/70 dark:text-beige/60 -mt-0.5">لتحفيظ القرآن الكريم أونلاين</p>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex items-center gap-7 font-medium text-sm">
+      <a href="#about" class="hover:text-primary dark:hover:text-gold transition-colors">من نحن</a>
+      <a href="#services" class="hover:text-primary dark:hover:text-gold transition-colors">خدماتنا</a>
+      <a href="#pricing" class="hover:text-primary dark:hover:text-gold transition-colors">الأسعار</a>
+      <a href="#teachers" class="hover:text-primary dark:hover:text-gold transition-colors">المعلمون</a>
+      <!--<a href="#testimonials" class="hover:text-primary dark:hover:text-gold transition-colors">آراء الطلاب</a>-->
+      <a href="#faq" class="hover:text-primary dark:hover:text-gold transition-colors">الأسئلة الشائعة</a>
+      <a href="#contact" class="hover:text-primary dark:hover:text-gold transition-colors">تواصل معنا</a>
+    </nav>
+
+    <div class="flex items-center gap-2">
+      <button id="darkToggle" aria-label="تبديل الوضع الليلي" class="w-10 h-10 grid place-items-center rounded-full border border-primary/20 dark:border-gold/30 hover:bg-primary/5 dark:hover:bg-white/5 transition-colors">
+        <i data-lucide="moon" class="w-5 h-5 dark:hidden"></i>
+        <i data-lucide="sun" class="w-5 h-5 hidden dark:block text-gold"></i>
+      </button>
+      <a href="#contact" class="hidden sm:inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white text-sm font-bold px-5 py-2.5 rounded-full shadow-soft transition-colors">
+        احجز حلقة مجانية
+      </a>
+      <button id="menuBtn" aria-label="القائمة" class="lg:hidden w-10 h-10 grid place-items-center rounded-full border border-primary/20 dark:border-gold/30">
+        <i data-lucide="menu" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu -->
+  <div id="mobileMenu" class="lg:hidden hidden bg-white dark:bg-[#0A1F19] border-b border-black/5 dark:border-white/10 px-6 py-4 space-y-3 font-medium text-sm">
+    <a href="#about" class="block py-1">من نحن</a>
+    <a href="#services" class="block py-1">خدماتنا</a>
+    <a href="#pricing" class="block py-1">الأسعار</a>
+    <a href="#teachers" class="block py-1">المعلمون</a>
+   <!-- <a href="#testimonials" class="block py-1">آراء الطلاب</a>-->
+    <a href="#faq" class="block py-1">الأسئلة الشائعة</a>
+    <a href="#contact" class="block py-1">تواصل معنا</a>
+    <a href="#contact" class="block text-center bg-primary text-white font-bold py-2.5 rounded-full mt-2">احجز حلقة مجانية</a>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section id="home" class="relative pt-32 pb-24 overflow-hidden hero-glow bg-beige dark:bg-[#0A1F19]">
+  <div class="absolute inset-0 star-pattern opacity-70"></div>
+  <div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="reveal">
+      <span class="inline-flex items-center gap-2 bg-primary/10 text-primary dark:bg-gold/10 dark:text-gold text-xs font-bold px-4 py-2 rounded-full mb-6">
+        <i data-lucide="sparkles" class="w-4 h-4"></i>
+        منصة تحفيظ قرآن معتمدة عبر الإنترنت
+      </span>
+      <h1 class="font-display font-black text-4xl sm:text-5xl lg:text-[3.4rem] leading-[1.25] text-primary dark:text-white">
+        ابدأ رحلتك مع القرآن الكريم <span class="text-gold">من أي مكان</span> في العالم
+      </h1>
+      <p class="mt-6 text-lg text-ink/70 dark:text-beige/70 max-w-xl leading-relaxed">
+        تعلم القرآن الكريم مع نخبة من المحفظين والمحفظات المتخصصين عبر الإنترنت، في جلسات فردية مباشرة تناسب وقتك أينما كنت.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-4">
+        <a href="#contact" class="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-primary-dark font-extrabold px-7 py-4 rounded-2xl shadow-gold transition-all hover:-translate-y-0.5">
+          <i data-lucide="calendar-check" class="w-5 h-5"></i>
+          احجز الحلقة التجريبية المجانية
+        </a>
+        <a href="https://wa.me/201029235023" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-primary hover:bg-primary-dark text-white font-extrabold px-7 py-4 rounded-2xl shadow-soft transition-all hover:-translate-y-0.5">
+          <i data-lucide="message-circle" class="w-5 h-5"></i>
+          تواصل معنا عبر واتساب
+        </a>
+      </div>
+      <!--<div class="mt-10 flex items-center gap-8 text-sm">
+        <div><p class="font-display font-extrabold text-2xl text-primary dark:text-gold">+1200</p><p class="text-ink/60 dark:text-beige/60">طالب وطالبة</p></div>
+        <div class="w-px h-10 bg-primary/15 dark:bg-white/10"></div>
+        <div><p class="font-display font-extrabold text-2xl text-primary dark:text-gold">+40</p><p class="text-ink/60 dark:text-beige/60">معلم ومعلمة</p></div>
+        <div class="w-px h-10 bg-primary/15 dark:bg-white/10"></div>
+        <div><p class="font-display font-extrabold text-2xl text-primary dark:text-gold">15+</p><p class="text-ink/60 dark:text-beige/60">دولة حول العالم</p></div>
+      </div>-->
+    </div>
+
+    <div class="reveal-scale relative">
+      <div class="relative rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-white/10">
+          <!--<svg viewBox="0 0 600 520" class="w-full h-auto">
+          <defs>
+            <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#0E8A67"/>
+              <stop offset="100%" stop-color="#0B6B50"/>
+            </linearGradient>
+          </defs>
+          <rect width="600" height="520" fill="url(#skyGrad)"/>
+          <!-- mosque silhouette 
+          <g fill="#08543F" opacity="0.9">
+            <rect x="0" y="330" width="600" height="190"/>
+            <circle cx="470" cy="300" r="34"/>
+            <rect x="452" y="300" width="36" height="70"/>
+            <path d="M452 300 a18 24 0 0 1 36 0 z"/>
+            <rect x="70" y="250" width="26" height="120"/>
+            <polygon points="83,220 96,250 70,250"/>
+            <rect x="500" y="250" width="26" height="120"/>
+            <polygon points="513,220 526,250 500,250"/>
+          </g>
+          <!-- arches row 
+          <g fill="#0B6B50">
+            <path d="M120 340 v-40 a30 30 0 0 1 60 0 v40 z"/>
+            <path d="M210 340 v-40 a30 30 0 0 1 60 0 v40 z"/>
+            <path d="M300 340 v-40 a30 30 0 0 1 60 0 v40 z"/>
+            <path d="M390 340 v-40 a30 30 0 0 1 60 0 v40 z"/>
+          </g>
+          <!-- child with laptop 
+          <g transform="translate(180,360)">
+            <ellipse cx="120" cy="150" rx="150" ry="14" fill="#08543F" opacity="0.5"/>
+            <rect x="40" y="70" width="160" height="90" rx="14" fill="#FAF6EC"/>
+            <rect x="55" y="82" width="130" height="55" rx="6" fill="#0B6B50"/>
+            <text x="120" y="115" text-anchor="middle" font-family="Cairo" font-size="20" fill="#C9A227" font-weight="800">﷽</text>
+            <circle cx="120" cy="40" r="26" fill="#F0CDA0"/>
+            <path d="M94 30 a26 20 0 0 1 52 0 z" fill="#5A3A22"/>
+            <rect x="90" y="60" width="60" height="45" rx="10" fill="#C9A227"/>
+          </g>
+          <g fill="#C9A227" opacity="0.85">
+            <circle cx="60" cy="70" r="3"/>
+            <circle cx="540" cy="60" r="3"/>
+            <circle cx="500" cy="120" r="2.4"/>
+            <circle cx="90" cy="130" r="2.2"/>
+          </g>
+        </svg>-->
+
+       <img
+    src="hero3.png"
+    alt="أكاديمية منار"
+    class="w-full"
+    style="height:520px; object-fit:cover;">
+
+
+      </div>
+      <div class="absolute -bottom-6 -right-6 bg-white dark:bg-[#0F2B22] rounded-2xl shadow-soft px-5 py-4 flex items-center gap-3 border border-primary/10 dark:border-white/10">
+        <div class="w-11 h-11 rounded-full bg-primary/10 dark:bg-gold/10 grid place-items-center">
+          <i data-lucide="shield-check" class="w-5 h-5 text-primary dark:text-gold"></i>
+        </div>
+        <div>
+          <p class="font-bold text-sm">بيئة تعليمية آمنة</p>
+          <p class="text-xs text-ink/60 dark:text-beige/60">إشراف كامل على كل حلقة</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="arch-divider">
+  <svg viewBox="0 0 1200 56" preserveAspectRatio="none"><path d="M0,0 Q300,56 600,0 T1200,0 V56 H0 Z" fill="currentColor" class="text-white dark:text-[#0A1F19]"/></svg>
+</div>
+
+<!-- ============ ABOUT ============ -->
+<section id="about" class="py-24 bg-white dark:bg-[#0A1F19]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid lg:grid-cols-2 gap-14 items-center">
+    <div class="reveal order-2 lg:order-1 relative">
+      <div class="rounded-3xl pattern-bg bg-beige dark:bg-[#0F2B22] p-10 border border-primary/10 dark:border-white/10">
+        <div class="grid grid-cols-2 gap-6">
+          <div class="bg-white dark:bg-[#0A1F19] rounded-2xl p-6 shadow-soft text-center card-hover">
+            <i data-lucide="book-open-check" class="w-8 h-8 text-primary dark:text-gold mx-auto mb-3"></i>
+            <p class="font-display font-extrabold text-2xl">جلسات فردية</p>
+          </div>
+          <div class="bg-white dark:bg-[#0A1F19] rounded-2xl p-6 shadow-soft text-center card-hover mt-8">
+            <i data-lucide="globe" class="w-8 h-8 text-primary dark:text-gold mx-auto mb-3"></i>
+            <p class="font-display font-extrabold text-2xl">من كل مكان</p>
+          </div>
+          <div class="bg-white dark:bg-[#0A1F19] rounded-2xl p-6 shadow-soft text-center card-hover">
+            <i data-lucide="users" class="w-8 h-8 text-primary dark:text-gold mx-auto mb-3"></i>
+            <p class="font-display font-extrabold text-2xl">لكل الأعمار</p>
+          </div>
+          <div class="bg-white dark:bg-[#0A1F19] rounded-2xl p-6 shadow-soft text-center card-hover mt-8">
+            <i data-lucide="heart-handshake" class="w-8 h-8 text-primary dark:text-gold mx-auto mb-3"></i>
+            <p class="font-display font-extrabold text-2xl">إشراف موثوق</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal order-1 lg:order-2">
+      <span class="text-gold font-bold text-sm">تعرف علينا</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-primary dark:text-white mt-2 mb-6">من نحن</h2>
+      <p class="text-ink/70 dark:text-beige/70 leading-loose text-lg">
+        أكاديمية منار لتحفيظ القرآن الكريم أونلاين مؤسسة تعليمية متخصصة في تعليم القرآن الكريم حفظًا وتجويدًا وتفسيرًا، للأطفال والرجال والنساء من مختلف أنحاء العالم، من خلال جلسات مباشرة فردية عبر الإنترنت.
+      </p>
+      <p class="text-ink/70 dark:text-beige/70 leading-loose text-lg mt-4">
+        نحرص في منار على اختيار نخبة من المعلمين والمعلمات المجازين، ونوفر بيئة تعليمية آمنة ومرنة تراعي مستوى كل طالب وتناسب جدوله الزمني، إيمانًا منا برسالة تيسير كتاب الله لكل مسلم ومسلمة.
+      </p>
+      <div class="mt-8 flex items-center gap-4">
+        <div class="flex -space-x-3 space-x-reverse">
+          <div class="w-11 h-11 rounded-full bg-primary border-2 border-white dark:border-[#0A1F19]"></div>
+          <div class="w-11 h-11 rounded-full bg-gold border-2 border-white dark:border-[#0A1F19]"></div>
+          <div class="w-11 h-11 rounded-full bg-primary-light border-2 border-white dark:border-[#0A1F19]"></div>
+        </div>
+        <p class="text-sm text-ink/60 dark:text-beige/60">فريق تعليمي معتمد يواكب رحلتك خطوة بخطوة</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section id="services" class="py-24 bg-beige dark:bg-[#0F2B22] pattern-bg">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <span class="text-gold font-bold text-sm">خدماتنا</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-primary dark:text-white mt-2">برامج تعليمية متكاملة</h2>
+      <p class="text-ink/60 dark:text-beige/60 mt-4">نقدّم مسارات تعليمية متخصصة تناسب جميع المستويات والأعمار</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="reveal bg-white dark:bg-[#0A1F19] rounded-3xl p-8 shadow-soft card-hover border border-primary/5 dark:border-white/5">
+        <div class="w-16 h-16 rounded-2xl bg-primary/10 dark:bg-gold/10 grid place-items-center mb-6">
+          <i data-lucide="book-marked" class="w-8 h-8 text-primary dark:text-gold"></i>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-3">تحفيظ القرآن الكريم</h3>
+        <p class="text-ink/60 dark:text-beige/60 leading-relaxed">برنامج حفظ ومراجعة منظم بخطة فردية تناسب كل طالب، مع متابعة مستمرة لضبط الحفظ وتثبيته.</p>
+      </div>
+      <div class="reveal bg-white dark:bg-[#0A1F19] rounded-3xl p-8 shadow-soft card-hover border border-primary/5 dark:border-white/5">
+        <div class="w-16 h-16 rounded-2xl bg-primary/10 dark:bg-gold/10 grid place-items-center mb-6">
+          <i data-lucide="mic" class="w-8 h-8 text-primary dark:text-gold"></i>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-3">التجويد</h3>
+        <p class="text-ink/60 dark:text-beige/60 leading-relaxed">تعلّم أحكام التجويد نظريًا وعمليًا حتى إتقان القراءة الصحيحة برواية حفص عن عاصم.</p>
+      </div>
+      <div class="reveal bg-white dark:bg-[#0A1F19] rounded-3xl p-8 shadow-soft card-hover border border-primary/5 dark:border-white/5">
+        <div class="w-16 h-16 rounded-2xl bg-primary/10 dark:bg-gold/10 grid place-items-center mb-6">
+          <i data-lucide="leaf" class="w-8 h-8 text-primary dark:text-gold"></i>
+        </div>
+        <h3 class="font-display font-bold text-xl mb-3">التفسير</h3>
+        <p class="text-ink/60 dark:text-beige/60 leading-relaxed">فهم معاني القرآن الكريم وسياقاته بأسلوب ميسّر يربط الطالب بمعاني الآيات وتدبرها.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ WHY CHOOSE US ============ -->
+<section class="py-24 bg-white dark:bg-[#0A1F19]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <span class="text-gold font-bold text-sm">مميزاتنا</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-primary dark:text-white mt-2">لماذا تختار أكاديمية منار؟</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <!-- feature card template -->
+      <div class="reveal flex items-start gap-4 bg-beige/60 dark:bg-[#0F2B22] rounded-2xl p-6 border border-primary/5 dark:border-white/5">
+        <i data-lucide="badge-check" class="w-6 h-6 text-primary dark:text-gold shrink-0 mt-1"></i>
+        <div><p class="font-bold">معلمون ومعلمات معتمدون</p><p class="text-sm text-ink/60 dark:text-beige/60 mt-1">إجازات في القراءات وخبرة تدريسية موثقة.</p></div>
+      </div>
+      <div class="reveal flex items-start gap-4 bg-beige/60 dark:bg-[#0F2B22] rounded-2xl p-6 border border-primary/5 dark:border-white/5">
+        <i data-lucide="clock" class="w-6 h-6 text-primary dark:text-gold shrink-0 mt-1"></i>
+        <div><p class="font-bold">مواعيد مرنة</p><p class="text-sm text-ink/60 dark:text-beige/60 mt-1">اختر الوقت الذي يناسبك من أي منطقة زمنية.</p></div>
+      </div>
+      <div class="reveal flex items-start gap-4 bg-beige/60 dark:bg-[#0F2B22] rounded-2xl p-6 border border-primary/5 dark:border-white/5">
+        <i data-lucide="user" class="w-6 h-6 text-primary dark:text-gold shrink-0 mt-1"></i>
+        <div><p class="font-bold">حصص فردية (١ إلى ١)</p><p class="text-sm text-ink/60 dark:text-beige/60 mt-1">اهتمام كامل بمستوى الطالب دون مشتتات.</p></div>
+      </div>
+      <div class="reveal flex items-start gap-4 bg-beige/60 dark:bg-[#0F2B22] rounded-2xl p-6 border border-primary/5 dark:border-white/5">
+        <i data-lucide="line-chart" class="w-6 h-6 text-primary dark:text-gold shrink-0 mt-1"></i>
+        <div><p class="font-bold">تقارير متابعة شهرية</p><p class="text-sm text-ink/60 dark:text-beige/60 mt-1">تقييم دوري لمستوى الحفظ والتجويد.</p></div>
+      </div>
+      <div class="reveal flex items-start gap-4 bg-beige/60 dark:bg-[#0F2B22] rounded-2xl p-6 border border-primary/5 dark:border-white/5">
+        <i data-lucide="shield-check" class="w-6 h-6 text-primary dark:text-gold shrink-0 mt-1"></i>
+        <div><p class="font-bold">بيئة تعليمية آمنة</p><p class="text-sm text-ink/60 dark:text-beige/60 mt-1">إشراف إداري كامل على جميع الحلقات.</p></div>
+      </div>
+      <div class="reveal flex items-start gap-4 bg-beige/60 dark:bg-[#0F2B22] rounded-2xl p-6 border border-primary/5 dark:border-white/5">
+        <i data-lucide="video" class="w-6 h-6 text-primary dark:text-gold shrink-0 mt-1"></i>
+        <div><p class="font-bold">حصص تفاعلية مباشرة</p><p class="text-sm text-ink/60 dark:text-beige/60 mt-1">سبورة تفاعلية وتواصل مباشر بالصوت والصورة.</p></div>
+      </div>
+      <div class="reveal flex items-start gap-4 bg-beige/60 dark:bg-[#0F2B22] rounded-2xl p-6 border border-primary/5 dark:border-white/5">
+        <i data-lucide="earth" class="w-6 h-6 text-primary dark:text-gold shrink-0 mt-1"></i>
+        <div><p class="font-bold">طلاب من كل الدول</p><p class="text-sm text-ink/60 dark:text-beige/60 mt-1">نرحب بالطلاب من جميع أنحاء العالم.</p></div>
+      </div>
+      <div class="reveal flex items-start gap-4 bg-beige/60 dark:bg-[#0F2B22] rounded-2xl p-6 border border-primary/5 dark:border-white/5">
+        <i data-lucide="gift" class="w-6 h-6 text-primary dark:text-gold shrink-0 mt-1"></i>
+        <div><p class="font-bold">حلقة تجريبية مجانية</p><p class="text-sm text-ink/60 dark:text-beige/60 mt-1">جرّب قبل الاشتراك دون أي التزام.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRICING ============ -->
+<section id="pricing" class="py-24 bg-beige dark:bg-[#0F2B22] pattern-bg">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <span class="text-gold font-bold text-sm">الباقات</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-primary dark:text-white mt-2">أسعار مناسبة للجميع</h2>
+      <p class="text-ink/60 dark:text-beige/60 mt-4">كل حصة تستغرق من ٣٠ إلى ٤٠ دقيقة، مع إمكانية تجربة أول حلقة مجانًا</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-8 items-stretch">
+      <!-- package 1 -->
+      <div class="reveal relative bg-white dark:bg-[#0A1F19] rounded-3xl p-8 shadow-soft border border-primary/10 dark:border-white/10 flex flex-col">
+        <h3 class="font-display font-bold text-lg text-ink/70 dark:text-beige/70">الباقة الأولى</h3>
+        <p class="font-display font-black text-4xl text-primary dark:text-gold mt-3">300 <span class="text-base font-bold">جنيه</span></p>
+        <p class="text-sm text-ink/50 dark:text-beige/50 mt-1">٤ حصص شهريًا</p>
+        <ul class="mt-6 space-y-3 text-sm flex-1">
+          <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary dark:text-gold"></i> حصص فردية مباشرة</li>
+          <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary dark:text-gold"></i> مدة الحصة ٣٠-٤٠ دقيقة</li>
+          <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary dark:text-gold"></i> متابعة أسبوعية</li>
+        </ul>
+        <a href="#contact" class="mt-8 text-center bg-primary/10 hover:bg-primary hover:text-white dark:bg-gold/10 dark:hover:bg-gold dark:hover:text-primary-dark text-primary dark:text-gold font-bold py-3 rounded-2xl transition-colors">اختر الباقة</a>
+      </div>
+
+      <!-- package 2 - highlighted -->
+      <div class="reveal relative bg-primary text-white rounded-3xl p-8 shadow-2xl border-2 border-gold flex flex-col lg:-translate-y-4">
+        <span class="badge-ribbon bg-gold text-primary-dark text-xs font-extrabold px-4 py-1.5 rounded-full shadow-gold">تجربة مجانية</span>
+        <h3 class="font-display font-bold text-lg text-beige/80 mt-2">الباقة الثانية</h3>
+        <p class="font-display font-black text-4xl text-gold mt-3">550 <span class="text-base font-bold">جنيه</span></p>
+        <p class="text-sm text-beige/70 mt-1">٨ حصص شهريًا</p>
+        <ul class="mt-6 space-y-3 text-sm flex-1">
+          <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold"></i> حصص فردية مباشرة</li>
+          <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold"></i> مدة الحصة ٣٠-٤٠ دقيقة</li>
+          <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold"></i> تقرير متابعة شهري</li>
+          <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-gold"></i> حلقة تجريبية مجانية</li>
+        </ul>
+        <a href="#contact" class="mt-8 text-center bg-gold hover:bg-gold-dark text-primary-dark font-extrabold py-3 rounded-2xl transition-colors">اختر الباقة</a>
+      </div>
+
+      <!-- package 3 -->
+      <div class="reveal relative bg-white dark:bg-[#0A1F19] rounded-3xl p-8 shadow-soft border border-primary/10 dark:border-white/10 flex flex-col">
+        <h3 class="font-display font-bold text-lg text-ink/70 dark:text-beige/70">الباقة الثالثة</h3>
+        <p class="font-display font-black text-4xl text-primary dark:text-gold mt-3">800 <span class="text-base font-bold">جنيه</span></p>
+        <p class="text-sm text-ink/50 dark:text-beige/50 mt-1">١٢ حصة شهريًا</p>
+        <ul class="mt-6 space-y-3 text-sm flex-1">
+          <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary dark:text-gold"></i> حصص فردية مباشرة</li>
+          <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary dark:text-gold"></i> مدة الحصة ٣٠-٤٠ دقيقة</li>
+          <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary dark:text-gold"></i> تقرير متابعة شهري</li>
+          <li class="flex items-center gap-2"><i data-lucide="check-circle" class="w-4 h-4 text-primary dark:text-gold"></i> أولوية في اختيار المواعيد</li>
+        </ul>
+        <a href="#contact" class="mt-8 text-center bg-primary/10 hover:bg-primary hover:text-white dark:bg-gold/10 dark:hover:bg-gold dark:hover:text-primary-dark text-primary dark:text-gold font-bold py-3 rounded-2xl transition-colors">اختر الباقة</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="py-24 bg-white dark:bg-[#0A1F19]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <span class="text-gold font-bold text-sm">خطوات بسيطة</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-primary dark:text-white mt-2">كيف تبدأ رحلتك معنا؟</h2>
+    </div>
+    <div class="grid md:grid-cols-4 gap-8 relative">
+      <div class="hidden md:block absolute top-8 right-[12%] left-[12%] h-0.5 bg-gradient-to-l from-primary via-gold to-primary opacity-30"></div>
+      <div class="reveal relative text-center">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-primary text-white font-display font-black text-xl grid place-items-center shadow-soft relative z-10">١</div>
+        <h3 class="font-bold mt-5">التسجيل</h3>
+        <p class="text-sm text-ink/60 dark:text-beige/60 mt-2">أنشئ حسابك عبر النموذج أو واتساب في دقائق</p>
+      </div>
+      <div class="reveal relative text-center">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-primary text-white font-display font-black text-xl grid place-items-center shadow-soft relative z-10">٢</div>
+        <h3 class="font-bold mt-5">احجز حلقتك المجانية</h3>
+        <p class="text-sm text-ink/60 dark:text-beige/60 mt-2">تعرّف على أسلوبنا في التعليم دون أي التزام</p>
+      </div>
+      <div class="reveal relative text-center">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-primary text-white font-display font-black text-xl grid place-items-center shadow-soft relative z-10">٣</div>
+        <h3 class="font-bold mt-5">اختر باقتك</h3>
+        <p class="text-sm text-ink/60 dark:text-beige/60 mt-2">حدد عدد الحصص المناسب لوقتك وهدفك</p>
+      </div>
+      <div class="reveal relative text-center">
+        <div class="w-16 h-16 mx-auto rounded-2xl bg-gold text-primary-dark font-display font-black text-xl grid place-items-center shadow-gold relative z-10">٤</div>
+        <h3 class="font-bold mt-5">ابدأ الحفظ</h3>
+        <p class="text-sm text-ink/60 dark:text-beige/60 mt-2">انطلق في رحلة حفظ القرآن مع معلمك الخاص</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TEACHERS ============ -->
+<section id="teachers" class="py-24 bg-beige dark:bg-[#0F2B22] pattern-bg">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <span class="text-gold font-bold text-sm">فريقنا</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-primary dark:text-white mt-2">معلمونا ومعلماتنا</h2>
+      <p class="text-ink/60 dark:text-beige/60 mt-4">نخبة من المجازين ذوي الخبرة في تعليم القرآن الكريم</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+      <div class="reveal bg-white dark:bg-[#0A1F19] rounded-3xl overflow-hidden shadow-soft card-hover border border-primary/5 dark:border-white/5">
+        <div class="h-40 bg-gradient-to-br from-primary to-primary-light grid place-items-center">
+          <i data-lucide="user-round" class="w-16 h-16 text-white/90"></i>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold">الشيخ على نجاح على</h3>
+          <p class="text-xs text-gold font-bold mt-1">معلم قرآن بالأزهر الشريف</p>
+          <p class="text-sm text-ink/60 dark:text-beige/60 mt-2">خبرة ١٠ سنوات في تحفيظ القرآن للأطفال والكبار</p>
+          <p class="text-xs text-ink/50 dark:text-beige/50 mt-2 flex items-center gap-1"><i data-lucide="languages" class="w-3.5 h-3.5"></i> العربية، الإنجليزية</p>
+        </div>
+      </div>
+
+      <div class="reveal bg-white dark:bg-[#0A1F19] rounded-3xl overflow-hidden shadow-soft card-hover border border-primary/5 dark:border-white/5">
+        <div class="h-40 bg-gradient-to-br from-gold to-gold-light grid place-items-center">
+          <i data-lucide="user-round" class="w-16 h-16 text-white/90"></i>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold">الشيخ أحمد عبدالبديع </h3>
+          <p class="text-xs text-gold font-bold mt-1">إجازة في رواية حفص</p>
+          <p class="text-sm text-ink/60 dark:text-beige/60 mt-2">متخصصة في تعليم أساسيات التجويد</p>
+          <p class="text-xs text-ink/50 dark:text-beige/50 mt-2 flex items-center gap-1"><i data-lucide="languages" class="w-3.5 h-3.5"></i> العربية</p>
+        </div>
+      </div>
+
+      <div class="reveal bg-white dark:bg-[#0A1F19] rounded-3xl overflow-hidden shadow-soft card-hover border border-primary/5 dark:border-white/5">
+        <div class="h-40 bg-gradient-to-br from-primary-dark to-primary grid place-items-center">
+          <i data-lucide="user-round" class="w-16 h-16 text-white/90"></i>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold">الشيخ رمضان قاعود</h3>
+          <p class="text-xs text-gold font-bold mt-1">متقن لرواية حفص</p>
+          <p class="text-sm text-ink/60 dark:text-beige/60 mt-2">يهتم بربط الطلاب بمعاني الآيات أثناء الحفظ</p>
+          <p class="text-xs text-ink/50 dark:text-beige/50 mt-2 flex items-center gap-1"><i data-lucide="languages" class="w-3.5 h-3.5"></i> العربية</p>
+        </div>
+      </div>
+
+      <div class="reveal bg-white dark:bg-[#0A1F19] rounded-3xl overflow-hidden shadow-soft card-hover border border-primary/5 dark:border-white/5">
+        <div class="h-40 bg-gradient-to-br from-gold-dark to-gold grid place-items-center">
+          <i data-lucide="user-round" class="w-16 h-16 text-white/90"></i>
+        </div>
+        <div class="p-5">
+          <h3 class="font-bold">الأستاذة سارة محمود</h3>
+          <p class="text-xs text-gold font-bold mt-1">متقنة لحفص</p>
+          <p class="text-sm text-ink/60 dark:text-beige/60 mt-2">خبرة واسعة في تأسيس صغار الطالبات على التلاوة الصحيحة</p>
+          <p class="text-xs text-ink/50 dark:text-beige/50 mt-2 flex items-center gap-1"><i data-lucide="languages" class="w-3.5 h-3.5"></i> العربية</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!--
+<!-- ============ TESTIMONIALS ============ 
+<section id="testimonials" class="py-24 bg-white dark:bg-[#0A1F19]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <span class="text-gold font-bold text-sm">آراء الطلاب وأولياء الأمور</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-primary dark:text-white mt-2">ماذا يقولون عنّا</h2>
+    </div>
+    <div class="grid md:grid-cols-3 gap-8">
+      <div class="reveal bg-beige/60 dark:bg-[#0F2B22] rounded-3xl p-8 border border-primary/5 dark:border-white/5">
+        <div class="flex gap-1 text-gold mb-4">★★★★★</div>
+        <p class="text-ink/70 dark:text-beige/70 leading-relaxed">"ابني أصبح يحب حفظ القرآن بعدما كان يجد صعوبة، المعلم متابع جدًا وصبور معه."</p>
+        <div class="flex items-center gap-3 mt-6">
+          <div class="w-11 h-11 rounded-full bg-primary/10 dark:bg-gold/10 grid place-items-center"><i data-lucide="user" class="w-5 h-5 text-primary dark:text-gold"></i></div>
+          <div><p class="font-bold text-sm">أم عبد الرحمن</p><p class="text-xs text-ink/50 dark:text-beige/50">ولية أمر طالب</p></div>
+        </div>
+      </div>
+      <div class="reveal bg-beige/60 dark:bg-[#0F2B22] rounded-3xl p-8 border border-primary/5 dark:border-white/5">
+        <div class="flex gap-1 text-gold mb-4">★★★★★</div>
+        <p class="text-ink/70 dark:text-beige/70 leading-relaxed">"المواعيد المرنة ساعدتني كثيرًا مع انشغالي، واستطعت حفظ جزء كامل خلال أشهر قليلة."</p>
+        <div class="flex items-center gap-3 mt-6">
+          <div class="w-11 h-11 rounded-full bg-primary/10 dark:bg-gold/10 grid place-items-center"><i data-lucide="user" class="w-5 h-5 text-primary dark:text-gold"></i></div>
+          <div><p class="font-bold text-sm">هدى إبراهيم</p><p class="text-xs text-ink/50 dark:text-beige/50">طالبة</p></div>
+        </div>
+      </div>
+      <div class="reveal bg-beige/60 dark:bg-[#0F2B22] rounded-3xl p-8 border border-primary/5 dark:border-white/5">
+        <div class="flex gap-1 text-gold mb-4">★★★★★</div>
+        <p class="text-ink/70 dark:text-beige/70 leading-relaxed">"تجربة رائعة من أول حلقة مجانية، شعرت بجدية الأكاديمية واهتمامها الحقيقي بالطالب."</p>
+        <div class="flex items-center gap-3 mt-6">
+          <div class="w-11 h-11 rounded-full bg-primary/10 dark:bg-gold/10 grid place-items-center"><i data-lucide="user" class="w-5 h-5 text-primary dark:text-gold"></i></div>
+          <div><p class="font-bold text-sm">محمد العتيبي</p><p class="text-xs text-ink/50 dark:text-beige/50">ولي أمر طالبتين</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- ============ FAQ ============ -->
+<section id="faq" class="py-24 bg-beige dark:bg-[#0F2B22] pattern-bg">
+  <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-14 reveal">
+      <span class="text-gold font-bold text-sm">لديك سؤال؟</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-primary dark:text-white mt-2">الأسئلة الشائعة</h2>
+    </div>
+    <div class="space-y-4" id="faqList">
+      <div class="reveal faq-item bg-white dark:bg-[#0A1F19] rounded-2xl border border-primary/10 dark:border-white/10 overflow-hidden">
+        <button class="faq-q w-full text-right flex items-center justify-between p-5 font-bold">
+          <span>كيف تتم الحلقة التجريبية المجانية؟</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-primary dark:text-gold transition-transform"></i>
+        </button>
+        <div class="faq-a max-h-0 overflow-hidden transition-all duration-300 px-5 text-ink/60 dark:text-beige/60 text-sm leading-relaxed">
+          <p class="pb-5">تواصل معنا عبر واتساب أو نموذج التواصل، وسنحدد لك موعدًا مناسبًا لحلقة تجريبية مجانية دون أي التزام مادي.</p>
+        </div>
+      </div>
+      <div class="reveal faq-item bg-white dark:bg-[#0A1F19] rounded-2xl border border-primary/10 dark:border-white/10 overflow-hidden">
+        <button class="faq-q w-full text-right flex items-center justify-between p-5 font-bold">
+          <span>ما البرنامج المستخدم في الحصص؟</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-primary dark:text-gold transition-transform"></i>
+        </button>
+        <div class="faq-a max-h-0 overflow-hidden transition-all duration-300 px-5 text-ink/60 dark:text-beige/60 text-sm leading-relaxed">
+          <p class="pb-5">نستخدم برامج اتصال مرئي موثوقة وسهلة الاستخدام مثل Zoom Meeting , Google Meeting ، ويمكن الحضور من الجوال أو الكمبيوتر بسهولة تامة.</p>
+        </div>
+      </div>
+      <div class="reveal faq-item bg-white dark:bg-[#0A1F19] rounded-2xl border border-primary/10 dark:border-white/10 overflow-hidden">
+        <button class="faq-q w-full text-right flex items-center justify-between p-5 font-bold">
+          <span>هل تتوفر معلمات للطالبات والأطفال؟</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-primary dark:text-gold transition-transform"></i>
+        </button>
+        <div class="faq-a max-h-0 overflow-hidden transition-all duration-300 px-5 text-ink/60 dark:text-beige/60 text-sm leading-relaxed">
+          <p class="pb-5">نعم، لدينا نخبة من المعلمات المتخصصات في تعليم النساء والفتيات والأطفال في بيئة تعليمية مريحة وآمنة.</p>
+        </div>
+      </div>
+      <div class="reveal faq-item bg-white dark:bg-[#0A1F19] rounded-2xl border border-primary/10 dark:border-white/10 overflow-hidden">
+        <button class="faq-q w-full text-right flex items-center justify-between p-5 font-bold">
+          <span>هل يمكن تغيير موعد الحصة؟</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-primary dark:text-gold transition-transform"></i>
+        </button>
+        <div class="faq-a max-h-0 overflow-hidden transition-all duration-300 px-5 text-ink/60 dark:text-beige/60 text-sm leading-relaxed">
+          <p class="pb-5">بالتأكيد، يمكن تعديل الموعد بالتنسيق المسبق مع المعلم أو إدارة الأكاديمية بما يحقق أعلى مرونة للطالب.</p>
+        </div>
+      </div>
+      <div class="reveal faq-item bg-white dark:bg-[#0A1F19] rounded-2xl border border-primary/10 dark:border-white/10 overflow-hidden">
+        <button class="faq-q w-full text-right flex items-center justify-between p-5 font-bold">
+          <span>كيف يتم الدفع؟</span>
+          <i data-lucide="chevron-down" class="w-5 h-5 text-primary dark:text-gold transition-transform"></i>
+        </button>
+        <div class="faq-a max-h-0 overflow-hidden transition-all duration-300 px-5 text-ink/60 dark:text-beige/60 text-sm leading-relaxed">
+          <p class="pb-5">يتم الدفع شهريًا بعد اختيار الباقة المناسبة، وسيتم توضيح طرق الدفع المتاحة عند التواصل معنا.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONTACT ============ -->
+<section id="contact" class="py-24 bg-white dark:bg-[#0A1F19]">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14 reveal">
+      <span class="text-gold font-bold text-sm">تواصل معنا</span>
+      <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-primary dark:text-white mt-2">نسعد بخدمتك</h2>
+      <p class="text-ink/60 dark:text-beige/60 mt-4">احجز حلقتك التجريبية المجانية الآن أو تواصل معنا لأي استفسار</p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-10">
+      <div class="reveal space-y-6">
+        <div class="flex items-center gap-4 bg-beige/60 dark:bg-[#0F2B22] rounded-2xl p-5 border border-primary/5 dark:border-white/5">
+          <div class="w-12 h-12 rounded-xl bg-primary/10 dark:bg-gold/10 grid place-items-center"><i data-lucide="phone" class="w-5 h-5 text-primary dark:text-gold"></i></div>
+          <div><p class="text-xs text-ink/50 dark:text-beige/50">اتصل بنا</p><p class="font-bold" dir="ltr">01029235023</p></div>
+        </div>
+        <a href="https://wa.me/201029235023" target="_blank" rel="noopener" class="flex items-center gap-4 bg-[#25D366]/10 hover:bg-[#25D366]/20 rounded-2xl p-5 border border-[#25D366]/20 transition-colors">
+          <div class="w-12 h-12 rounded-xl bg-[#25D366]/20 grid place-items-center"><i data-lucide="message-circle" class="w-5 h-5 text-[#1DA851]"></i></div>
+          <div><p class="text-xs text-ink/50 dark:text-beige/50">واتساب</p><p class="font-bold">تواصل مباشر عبر واتساب</p></div>
+        </a>
+        <div class="rounded-2xl overflow-hidden border border-primary/10 dark:border-white/10 h-64 relative bg-beige dark:bg-[#0F2B22] grid place-items-center">
+          <div class="text-center text-ink/40 dark:text-beige/40">
+            <i data-lucide="map-pin" class="w-8 h-8 mx-auto mb-2 text-primary dark:text-gold"></i>
+            <p class="text-sm">خريطة الموقع (Google Map)</p>
+          </div>
+        </div>
+      </div>
+
+      <form class="reveal bg-beige/60 dark:bg-[#0F2B22] rounded-3xl p-8 border border-primary/5 dark:border-white/5 space-y-4" onsubmit="event.preventDefault(); this.reset(); document.getElementById('formMsg').classList.remove('hidden');">
+        <div class="grid sm:grid-cols-2 gap-4">
+          <input required type="text" placeholder="الاسم الكامل" class="w-full rounded-xl border border-primary/15 dark:border-white/10 bg-white dark:bg-[#0A1F19] px-4 py-3 text-sm">
+          <input required type="tel" placeholder="رقم الهاتف / واتساب" class="w-full rounded-xl border border-primary/15 dark:border-white/10 bg-white dark:bg-[#0A1F19] px-4 py-3 text-sm">
+        </div>
+        <select class="w-full rounded-xl border border-primary/15 dark:border-white/10 bg-white dark:bg-[#0A1F19] px-4 py-3 text-sm">
+          <option>البرنامج المطلوب</option>
+          <option>تحفيظ القرآن الكريم</option>
+          <option>التجويد</option>
+          <option>التفسير</option>
+        </select>
+        <textarea rows="4" placeholder="رسالتك أو ملاحظاتك" class="w-full rounded-xl border border-primary/15 dark:border-white/10 bg-white dark:bg-[#0A1F19] px-4 py-3 text-sm"></textarea>
+        <button type="submit" class="w-full bg-primary hover:bg-primary-dark text-white font-extrabold py-3.5 rounded-xl shadow-soft transition-colors">إرسال الطلب</button>
+        <p id="formMsg" class="hidden text-primary dark:text-gold text-sm text-center font-bold">تم إرسال طلبك بنجاح، سنتواصل معك قريبًا بإذن الله ✓</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-[#08231B] text-beige/80 pt-16 pb-8 star-pattern">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+    <div>
+      <div class="flex items-center gap-3 mb-4">
+        <svg width="40" height="40" viewBox="0 0 64 64">
+          <circle cx="32" cy="32" r="31" fill="#0B6B50"/>
+          <path d="M32 6 L38 22 L55 22 L41 32 L46 49 L32 39 L18 49 L23 32 L9 22 L26 22 Z" fill="none" stroke="#C9A227" stroke-width="1.6"/>
+          <path d="M32 16c-9 0-16 7-16 16s7 16 16 16c5 0 9.5-2.3 12.4-6-3 2-6.6 3-10.4 3-9 0-14-7-14-13s5-13 14-13c3.8 0 7.4 1 10.4 3-2.9-3.7-7.4-6-12.4-6z" fill="#FAF6EC"/>
+        </svg>
+        <p class="font-display font-extrabold text-white">أكاديمية منار</p>
+      </div>
+      <p class="text-sm leading-relaxed">نُيسّر تعلّم كتاب الله لكل مسلم ومسلمة أينما كانوا، بجودة تعليمية وموثوقية عالية.</p>
+      <div class="flex gap-3 mt-5">
+        <a href="#" aria-label="فيسبوك" class="w-9 h-9 rounded-full bg-white/10 hover:bg-gold hover:text-primary-dark grid place-items-center transition-colors"><i data-lucide="facebook" class="w-4 h-4"></i></a>
+        <a href="#" aria-label="انستغرام" class="w-9 h-9 rounded-full bg-white/10 hover:bg-gold hover:text-primary-dark grid place-items-center transition-colors"><i data-lucide="instagram" class="w-4 h-4"></i></a>
+        <a href="#" aria-label="يوتيوب" class="w-9 h-9 rounded-full bg-white/10 hover:bg-gold hover:text-primary-dark grid place-items-center transition-colors"><i data-lucide="youtube" class="w-4 h-4"></i></a>
+        <a href="https://wa.me/201029235023" aria-label="واتساب" class="w-9 h-9 rounded-full bg-white/10 hover:bg-gold hover:text-primary-dark grid place-items-center transition-colors"><i data-lucide="message-circle" class="w-4 h-4"></i></a>
+      </div>
+    </div>
+    <div>
+      <p class="font-bold text-white mb-4">روابط سريعة</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#about" class="hover:text-gold transition-colors">من نحن</a></li>
+        <li><a href="#services" class="hover:text-gold transition-colors">خدماتنا</a></li>
+        <li><a href="#pricing" class="hover:text-gold transition-colors">الأسعار</a></li>
+        <li><a href="#teachers" class="hover:text-gold transition-colors">المعلمون</a></li>
+        <li><a href="#faq" class="hover:text-gold transition-colors">الأسئلة الشائعة</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-bold text-white mb-4">سياسات</p>
+      <ul class="space-y-2 text-sm">
+        <li><a href="#" class="hover:text-gold transition-colors">سياسة الخصوصية</a></li>
+        <li><a href="#" class="hover:text-gold transition-colors">الشروط والأحكام</a></li>
+        <li><a href="#" class="hover:text-gold transition-colors">سياسة الاسترجاع</a></li>
+      </ul>
+    </div>
+    <div>
+      <p class="font-bold text-white mb-4">تواصل معنا</p>
+      <p class="text-sm flex items-center gap-2" dir="ltr"><i data-lucide="phone" class="w-4 h-4"></i> 01029235023</p>
+      <!--<p class="text-sm flex items-center gap-2 mt-2"><i data-lucide="mail" class="w-4 h-4"></i> info@manar-academy.com</p>-->
+    </div>
+  </div>
+  <div class="mt-12 pt-6 border-t border-white/10 text-center text-xs text-beige/50">
+    © 2026 أكاديمية منار لتحفيظ القرآن الكريم أونلاين. جميع الحقوق محفوظة.
+  </div>
+</footer>
+
+<!-- Floating buttons -->
+<a href="https://wa.me/201029235023" target="_blank" rel="noopener" aria-label="تواصل عبر واتساب"
+   class="whatsapp-pulse fixed bottom-6 left-6 z-50 w-14 h-14 rounded-full bg-[#25D366] text-white grid place-items-center shadow-xl">
+  <i data-lucide="message-circle" class="w-7 h-7"></i>
+</a>
+<button id="toTop" aria-label="العودة للأعلى" class="hidden fixed bottom-6 right-6 z-50 w-12 h-12 rounded-full bg-primary text-white grid place-items-center shadow-xl hover:bg-primary-dark transition-colors">
+  <i data-lucide="arrow-up" class="w-5 h-5"></i>
+</button>
+
+<script>
+  lucide.createIcons();
+
+  // Dark mode
+  const root = document.documentElement;
+  const darkToggle = document.getElementById('darkToggle');
+  if (localStorage.getItem('manar-theme') === 'dark') root.classList.add('dark');
+  darkToggle.addEventListener('click', () => {
+    root.classList.toggle('dark');
+    localStorage.setItem('manar-theme', root.classList.contains('dark') ? 'dark' : 'light');
+  });
+
+  // Mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  menuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.add('hidden')));
+
+  // Sticky nav shadow
+  const navInner = document.getElementById('navInner');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 20) navInner.classList.add('shadow-md');
+    else navInner.classList.remove('shadow-md');
+
+    const toTop = document.getElementById('toTop');
+    if (window.scrollY > 500) toTop.classList.remove('hidden'); else toTop.classList.add('hidden');
+  });
+  document.getElementById('toTop').addEventListener('click', () => window.scrollTo({top:0, behavior:'smooth'}));
+
+  // Scroll reveal
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal, .reveal-scale').forEach(el => io.observe(el));
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.parentElement;
+      const answer = item.querySelector('.faq-a');
+      const icon = btn.querySelector('svg');
+      const isOpen = answer.style.maxHeight && answer.style.maxHeight !== '0px';
+      document.querySelectorAll('.faq-a').forEach(a => a.style.maxHeight = '0px');
+      document.querySelectorAll('.faq-q svg').forEach(i => i.style.transform = 'rotate(0deg)');
+      if (!isOpen) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        icon.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+</script>
+</body>
+</html>
